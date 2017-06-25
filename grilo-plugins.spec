@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.4
-Release  : 2
+Release  : 3
 URL      : http://ftp.gnome.org/pub/gnome/sources/grilo-plugins/0.3/grilo-plugins-0.3.4.tar.xz
 Source0  : http://ftp.gnome.org/pub/gnome/sources/grilo-plugins/0.3/grilo-plugins-0.3.4.tar.xz
 Summary  : No detailed summary available
