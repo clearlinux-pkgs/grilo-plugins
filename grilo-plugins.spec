@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.4
-Release  : 1
+Release  : 2
 URL      : http://ftp.gnome.org/pub/gnome/sources/grilo-plugins/0.3/grilo-plugins-0.3.4.tar.xz
 Source0  : http://ftp.gnome.org/pub/gnome/sources/grilo-plugins/0.3/grilo-plugins-0.3.4.tar.xz
 Summary  : No detailed summary available
@@ -15,6 +15,7 @@ Requires: grilo-plugins-data
 Requires: grilo-plugins-doc
 Requires: grilo-plugins-locales
 BuildRequires : gettext
+BuildRequires : gmime-dev
 BuildRequires : gperf
 BuildRequires : intltool
 BuildRequires : itstool
@@ -84,12 +85,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1498399311
+export SOURCE_DATE_EPOCH=1498399477
 %configure --disable-static
 make V=1  %{?_smp_mflags}
 
 %install
-export SOURCE_DATE_EPOCH=1498399311
+export SOURCE_DATE_EPOCH=1498399477
 rm -rf %{buildroot}
 %make_install
 %find_lang grilo-plugins
