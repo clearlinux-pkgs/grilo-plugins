@@ -1,0 +1,10 @@
+# This file contains pkgconfig build requirements that get picked up
+# but are undesirable. One entry per line, no whitespace.
+gmime-2.6
+avahi-gobject
+gom-1.0
+libdmapsharing-3.0
+libmediaart-2.0
+tracker-sparql-VERSION
+avahi-client
+avahi-glib
