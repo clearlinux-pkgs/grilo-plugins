@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.5
-Release  : 5
+Release  : 6
 URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.5.tar.xz
 Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.5.tar.xz
 Summary  : No detailed summary available
