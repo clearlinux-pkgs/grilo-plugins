@@ -1,3 +1,670 @@
+commit 99c6c8942a3b19b3c178f2bd3d8deef270db6cf8
+Author: Victor Toso <me@victortoso.com>
+Date:   Tue Jul 17 16:56:40 2018 +0200
+
+    Release 0.3.6
+
+ NEWS | 66 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 66 insertions(+)
+
+commit e3196693258c2935023f482592ff16de6f6f56ec
+Author: Alexander Mikhaylenko <exalm7659@gmail.com>
+Date:   Tue Jul 17 12:07:02 2018 +0000
+
+    meson: Install lua-factory sources to correct dir
+    
+    https://gitlab.gnome.org/GNOME/grilo-plugins/issues/1
+
+ meson.build                 | 1 +
+ src/lua-factory/meson.build | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+commit 3e94aa146d3ad5e716509ccecc6923abfc368e68
+Author: Victor Toso <me@victortoso.com>
+Date:   Tue Jul 17 13:23:51 2018 +0200
+
+    build: include meson in the tarballs
+    
+    https://gitlab.gnome.org/GNOME/grilo/issues/4
+
+ Makefile.am | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 730fbb685027c4cab1570d597d7b9fc1e2f1a923
+Author: Victor Toso <me@victortoso.com>
+Date:   Tue Jul 17 13:29:47 2018 +0200
+
+    tests: Disable metrolyrics test while it's broken
+    
+    The meson change from 4130f1d7006d62b3115923971dddce36eaa08848
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795361
+
+ tests/lua-factory/sources/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 13157fde3f274609f48d9e7dc590023d318dc7ee
+Author: veer <bveer428@gmail.com>
+Date:   Wed Jun 6 00:10:49 2018 +0530
+
+    euronews: Fix parsing of metadata
+    
+    The base url of euronews source might depend on the language now.
+    
+    The url previously pointed to flash stream as now it points to a m3u8
+    playlist, like:
+    
+     | #EXTM3U
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=2000000,RESOLUTION=1280x720
+     | ewnsabrdepri_ger_720p.m3u8
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=1200000,RESOLUTION=960x540
+     | ewnsabrdepri_ger_540p.m3u8
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=750000,RESOLUTION=640x360
+     | ewnsabrdepri_ger_360p.m3u8
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=512000,RESOLUTION=400x224
+     | ewnsabrdepri_ger_224p.m3u8
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=350000,RESOLUTION=320x180
+     | ewnsabrdepri_ger_180p.m3u8
+     | #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=200000,RESOLUTION=160x90
+     | ewnsabrdepri_ger_90p.m3u8
+    
+    Closes #3
+    Signed-off-by: Victor Toso <victortoso@redhat.com>
+
+ src/lua-factory/sources/grl-euronews.lua | 119 +++++++++++++++++++++----------
+ 1 file changed, 80 insertions(+), 39 deletions(-)
+
+commit d9df3871d45a23b87dfe39ecc1c03661f0115f41
+Author: veer <bveer428@gmail.com>
+Date:   Mon Jun 4 02:01:20 2018 +0530
+
+    guardianvideos: Fix parsing of metadata
+    
+    Closes #2
+    Signed-off-by: Victor Toso <victortoso@redhat.com>
+
+ src/lua-factory/sources/grl-guardianvideos.lua | 27 ++++++++++++++++++++++++--
+ 1 file changed, 25 insertions(+), 2 deletions(-)
+
+commit 5f4e6dd666d376ea20d81b9dfc9c8bde35e3dfb2
+Author: Victor Toso <me@victortoso.com>
+Date:   Fri Jul 13 12:01:58 2018 +0200
+
+    tests: Update url for games tests
+    
+    Missed from db0b69b1136 where thegamesdb's lua source changed the base
+    api to http://legacy.thegamesdb.net/api
+    
+    Signed-off-by: Victor Toso <victortoso@redhat.com>
+
+ tests/games/data/network-data.ini | 28 ++++++++++++++--------------
+ 1 file changed, 14 insertions(+), 14 deletions(-)
+
+commit 58fc5b8c2ee8a9b50a9b2a43e567646f68c60ee8
+Author: Matej Urbančič <mateju@svn.gnome.org>
+Date:   Wed Jul 11 21:47:38 2018 +0200
+
+    Updated Slovenian translation
+
+ po/sl.po | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit ccd3e8373e015e33e1600b900c5852448ab5fbc0
+Author: Matej Urbančič <mateju@svn.gnome.org>
+Date:   Wed Jul 11 21:45:58 2018 +0200
+
+    Added Slovenian translation
+
+ po/sl.po | 367 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 184 insertions(+), 183 deletions(-)
+
+commit bb144d02345d3b9998c891e6229b44f446f41920
+Author: Matej Urbančič <mateju@svn.gnome.org>
+Date:   Wed Jul 11 21:43:33 2018 +0200
+
+    Added Slovenian translation
+
+ po/sl.po | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+commit 9cf34da94dce712dde3b3f189fb9000c60deb4b8
+Author: Balázs Meskó <meskobalazs@fedoraproject.org>
+Date:   Mon Jul 9 13:12:38 2018 +0000
+
+    Update Hungarian translation
+
+ po/hu.po | 347 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 173 insertions(+), 174 deletions(-)
+
+commit db0b69b1136e6ad425678ac5e490c1b84c3d8723
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Fri Jul 6 21:03:34 2018 +0530
+
+    thegamesdb: Update base api url
+    
+    The current API has been deprecated and a date to be shutdown is yet
+    to be defined but in the meanwhile the url needs to be updated to keep
+    source working.
+    
+    Quote from: https://forums.thegamesdb.net/viewtopic.php?t=27
+    
+    On Jun 10, 2018
+     > 2 weeks ago we started redirecting http://thegamesdb.net/
+     > traffic to http://legacy.thegamesdb.net/,
+     > and now in 2 weeks time whats currently known as
+     > https://beta.thegamesdb.net/ would be moved to
+     > https://thegamesdb.net/
+    
+    https://gitlab.gnome.org/GNOME/grilo-plugins/issues/6
+    Signed-off-by: Victor Toso <victortoso@redhat.com>
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 1e4d89404fddf503ce95bb2f7237c0375df63f8c
+Author: Daniel Mustieles <daniel.mustieles.contractor@bbva.com>
+Date:   Mon Jul 9 08:51:34 2018 +0200
+
+    Updated Spanish translation
+
+ po/es.po | 361 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 185 insertions(+), 176 deletions(-)
+
+commit a61574b04ddcbda7627d4e78585fdb307d301fb5
+Author: Bruno Lopes da Silva <brunolopesbldsb@gmail.com>
+Date:   Sun Jul 8 16:33:23 2018 +0000
+
+    Update Brazilian Portuguese translation
+
+ po/pt_BR.po | 370 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 185 insertions(+), 185 deletions(-)
+
+commit f5a01b36d88e86d13078a9f1544e68f359b9b17f
+Author: Tim Sabsch <tim@sabsch.com>
+Date:   Sat Jul 7 08:57:31 2018 +0000
+
+    Update German translation
+
+ po/de.po | 350 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 175 insertions(+), 175 deletions(-)
+
+commit 46273f83a611be3c94ba263f52504c7795ca29dd
+Author: Piotr Drąg <piotrdrag@gmail.com>
+Date:   Fri Jul 6 15:56:02 2018 +0200
+
+    Update Polish translation
+
+ po/pl.po | 354 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 177 insertions(+), 177 deletions(-)
+
+commit 4a57378db9e0f12b5bab92245903c011417cea1f
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Sat May 19 17:37:08 2018 +0530
+
+    test: Add test to check multiple genre
+    
+    Currently thegamesdb only returns genre for games with a
+    single genre. This test checks that thegamesdb returns
+    multiple genres for the game Shatterhand.
+
+ tests/games/test_games.c | 61 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+
+commit 95f991c76d4bde6746336e949d0329c42fec6e22
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Thu May 17 16:04:42 2018 +0530
+
+    thegamesdb: Fix setting multiple genres
+    
+    The _game.Genres_ table always contains a single _genre_ value. In
+    case the Game contains multiple genres, we should iterate over the
+    array in _game.Genres.genre_ which this patch does.
+    
+    Merge-request: !5
+    https://bugzilla.gnome.org/show_bug.cgi?id=796231
+    
+    Signed-off-by: Victor Toso <victortoso@redhat.com>
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit 97a4c1aba83652033e0c699b48febf9dd794c106
+Author: Piotr Drąg <piotrdrag@gmail.com>
+Date:   Thu Oct 6 04:12:45 2016 +0200
+
+    Use Unicode in translatable strings
+    
+    Changes "…" quotation marks to “…”, ' apostrophes to ’, - hyphens to —,
+    and one - hyphen to a colon.
+    
+    See https://developer.gnome.org/hig/stable/typography.html
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=772494
+
+ src/dleyna/grl-dleyna-source.c          | 4 ++--
+ src/dmap/grl-daap.c                     | 2 +-
+ src/dmap/grl-dpap.c                     | 2 +-
+ src/flickr/grl-flickr.c                 | 4 ++--
+ src/jamendo/grl-jamendo.c               | 2 +-
+ src/magnatune/grl-magnatune.c           | 2 +-
+ src/metadata-store/grl-metadata-store.c | 4 ++--
+ src/tracker/grl-tracker-source-api.c    | 2 +-
+ src/tracker/grl-tracker-utils.c         | 4 ++--
+ 9 files changed, 13 insertions(+), 13 deletions(-)
+
+commit 464fcc62d1978d0cafd997a48b5e48b464c710a1
+Author: Victor Toso <me@victortoso.com>
+Date:   Fri Jul 6 10:51:27 2018 +0200
+
+    doap: Add Description and Victor Toso as co-maintainer
+
+ grilo-plugins.doap | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit 2f119e1272394afba3634ab5bdbd3b9991571c35
+Author: Exalm <exalm7659@gmail.com>
+Date:   Tue May 8 21:30:56 2018 +0500
+
+    thegamesdb: Add Virtual Boy support
+    
+    Support Virtual Boy games via 'application/x-virtual-boy-rom' MIME type.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795943
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 4130f1d7006d62b3115923971dddce36eaa08848
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Apr 24 15:13:06 2018 +0200
+
+    tests: Disable metrolyrics test while it's broken
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795361
+
+ tests/lua-factory/sources/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f0f14a4fdfdbf1d70b0b28a2a18119da5f8ab4fa
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 18 18:08:59 2018 +0200
+
+    metrolyrics: Add debug helper to the tests
+    
+    Save the "computed" lyrics to a temporary file on disk, so as to avoid
+    having to guess how to have it downloaded and processed.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795361
+
+ tests/lua-factory/sources/test_lua_metrolyrics.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+commit 6e8a504228178f8e094857f9542771f6bb40efb9
+Author: Exalm <exalm7659@gmail.com>
+Date:   Sun Apr 15 19:22:10 2018 +0500
+
+    thegamesdb: Add TurboGrafx-CD support
+    
+    Add TurboGrafx-CD support via the unregistered
+    'application/x-pc-engine-cd-rom' MIME type as none is registered for
+    TurboGrafx-CD discs, similar to PlayStation games.
+    
+    Also move both TurboGrafx-CD and PlayStation to a separate section.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795275
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+commit 132f6c4af8ac945795520f239d7290c8fd899caa
+Author: Exalm <exalm7659@gmail.com>
+Date:   Sun Apr 15 19:20:19 2018 +0500
+
+    thegamesdb: Add Neo-Geo Pocket Color support
+    
+    Add Neo-Geo Pocket Color support via the
+    'application/x-neo-geo-pocket-color-rom' MIME type:
+    https://bugs.freedesktop.org/show_bug.cgi?id=106055
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795275
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit f8b9bad19d522c2f8cd25bb3e56a02f348d26fa3
+Author: Exalm <exalm7659@gmail.com>
+Date:   Sun Apr 15 19:18:17 2018 +0500
+
+    thegamesdb: Add WonderSwan and WonderSwan Color support
+    
+    Add WonderSwan and WonderSwan Color support via
+    'application/x-wonderswan-rom' and `application/x-wonderswan-color-rom'
+    MIME types.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795275
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit c066a6a8451e610ab0f42701f8adba4fc9d84729
+Author: Exalm <exalm7659@gmail.com>
+Date:   Sun Apr 15 19:13:18 2018 +0500
+
+    thegamesdb: Add Famicom Disk System support
+    
+    Add FDS support via the 'application/x-fds-disk' MIME type.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795275
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit caeb5dc7b5b68e91afd4ae7146a01944e34c37be
+Author: Exalm <exalm7659@gmail.com>
+Date:   Sun Apr 15 19:12:05 2018 +0500
+
+    thegamesdb: Add Atari Lynx support
+    
+    Add Atari Lynx support via the 'application/x-atari-lynx-rom' MIME type.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=795275
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 2d1ec6776a1e1746f3c75ddaba161de755c0cdb8
+Author: Exalm <exalm7659@gmail.com>
+Date:   Wed Apr 18 20:31:32 2018 +0500
+
+    thegamesdb: Handle situation with only one result
+    
+    In that case, results_table.Data.Game would contain GameTitle, id and
+    other keys directly and #results_table.Data.Game would return 0.
+    
+    All thegamesdb tests should pass now.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794504
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 68131928490f0009a77cf7d9829ad46d8ab8f342
+Author: Exalm <exalm7659@gmail.com>
+Date:   Wed Apr 18 20:28:31 2018 +0500
+
+    Revert "thegamesdb: Check for empty list"
+    
+    This reverts commit 6a06a6fdbafb16d3e4137bfe2522845255eada49.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794504
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit e5c9aba3837dbce14ab96c9fff68641a7d5b03f1
+Author: Exalm <exalm7659@gmail.com>
+Date:   Wed Apr 18 20:30:13 2018 +0500
+
+    test: Add a test for Shatterhand game
+    
+    This is a case of thegamesdb returning only one search result.
+    
+    This test is expected to fail.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794504
+
+ tests/games/data/network-data.ini                 |  6 ++++
+ tests/games/data/resolve-getgame-shatterhand.data | 41 +++++++++++++++++++++++
+ tests/games/data/resolve-shatterhand.data         | 10 ++++++
+ tests/games/test_games.c                          |  7 ++++
+ 4 files changed, 64 insertions(+)
+
+commit b1ae7098ee6b22480d8fe11d343a2150ff1414ee
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Wed Apr 18 17:58:54 2018 +0200
+
+    tmdb: Fix warning in g_object_ref() assignment
+    
+    grilo-plugins/src/tmdb/grl-tmdb.c: In function ‘grl_tmdb_source_resolve’:
+    grilo-plugins/src/tmdb/grl-tmdb.c:1346:17: warning: assignment to ‘GrlTmdbSource *’ {aka ‘struct _GrlTmdbSource *’} from incompatible pointer type ‘GrlSource *’ {aka ‘struct _GrlSource *’} [-Wincompatible-pointer-types]
+       closure->self = g_object_ref (source);
+                     ^
+
+ src/tmdb/grl-tmdb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d18b06fa2a9c6e4b667b00a248fed611b81d6f9c
+Author: Daniel Șerbănescu <daniel@serbanescu.dk>
+Date:   Sun Apr 8 19:45:41 2018 +0000
+
+    Add Romanian translation
+
+ po/LINGUAS |   1 +
+ po/ro.po   | 618 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 619 insertions(+)
+
+commit b3b8a98bdfe884fd7060e06244bd107e1544ec26
+Author: Jean Felder <jfelder@src.gnome.org>
+Date:   Sat Mar 31 00:11:09 2018 +0200
+
+    itunes-podcast: Handle GRL_COUNT_INFINITY
+    
+    Itunes podcast api does not handle limit equal to -1: it always
+    returns a number of results lower than MAX_ITEMS.
+    This also resolves a bug inside fetch_search_results_cb and
+    fetch_browse_results_cb. These functions expect count to be positive.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794849
+
+ src/lua-factory/sources/grl-itunes-podcast.lua | 19 +++++++++++++++----
+ 1 file changed, 15 insertions(+), 4 deletions(-)
+
+commit 81076c6da54599acd814e2ce628fb6e2208cbed5
+Author: Jean Felder <jfelder@src.gnome.org>
+Date:   Sat Mar 31 13:41:57 2018 +0200
+
+    magnatune: Add cover art support
+    
+    It follows the specifications defined at:
+    http://magnatune.com/info/sqlite-normalized
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794845
+    Signed-off-by: Victor Toso <me@victortoso.com>
+
+ src/magnatune/grl-magnatune.c | 42 +++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 37 insertions(+), 5 deletions(-)
+
+commit de694c68862e86fa6ff2ed3c0d2dd4e765afce18
+Author: Jean Felder <jfelder@src.gnome.org>
+Date:   Sat Mar 31 13:17:57 2018 +0200
+
+    magnatune: Remove trailing spaces
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=794845
+
+ src/magnatune/grl-magnatune.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit f9f16f17d813c2559b5aa9e9dfd13d1ac7dc7a74
+Author: Claude Paroz <claude@2xlibre.net>
+Date:   Mon Mar 26 14:43:05 2018 +0200
+
+    Add glib preset to meson i18n call
+
+ po/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 08cb2a843925eeefb59c6db3abbfe47cb565edd4
+Author: Cheng-Chia Tseng <pswo10680@gmail.com>
+Date:   Mon Mar 26 08:22:40 2018 +0000
+
+    Update Chinese (Taiwan) translation
+
+ po/zh_TW.po | 146 ++++++++++++++++++++++++++++++------------------------------
+ 1 file changed, 73 insertions(+), 73 deletions(-)
+
+commit 6a06a6fdbafb16d3e4137bfe2522845255eada49
+Author: Victor Toso <me@victortoso.com>
+Date:   Tue Mar 20 07:49:12 2018 +0100
+
+    thegamesdb: Check for empty list
+    
+    Checking if table exists is not enough. If xml field exists,
+    grl.lua.xml.string_to_table() will include that into the returning
+    table.
+    
+    Resolves: https://bugzilla.gnome.org/show_bug.cgi?id=794504
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit e21f495c9798ccb63f6c4f25fd68f951cfd6b9e1
+Author: gogo <trebelnik2@gmail.com>
+Date:   Fri Mar 16 19:14:12 2018 +0000
+
+    Add Croatian translation
+
+ po/LINGUAS |   1 +
+ po/hr.po   | 618 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 619 insertions(+)
+
+commit 7ecf4b230c7b0144e579f89b594bf2ce871d19f1
+Author: Justin van Steijn <jvs@fsfe.org>
+Date:   Sun Nov 5 17:00:40 2017 +0000
+
+    Add Dutch translation
+
+ po/LINGUAS |   1 +
+ po/nl.po   | 618 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 619 insertions(+)
+
+commit 8c5969e2f14fc4fec2fa3e76f2ffe962f51bdda5
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 10 11:08:22 2017 +0200
+
+    lua-factory: Remove unused variable in XML parser
+    
+    The variable assignment wasn't used, and "node" was already assigned to
+    either the root node, or one of its children earlier in the function.
+    
+    Caught by covscan:
+    grilo-plugins-0.3.4/src/lua-factory/lua-library/lua-xml.c:88: assigned_pointer: Assigning value from "is_root_node ? node : node->children" to "node" here, but that stored value is overwritten before it can be used.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=788757
+
+ src/lua-factory/lua-library/lua-xml.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit a7eb4b95006df946dfdd66f95ca16250f97ef3ed
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Oct 10 11:04:27 2017 +0200
+
+    lua-factory: Replace assertions with g_return_* macros
+    
+    Assertions might be disabled, and really shouldn't be used from within a
+    library, but this should protect us enough for debugging purposes.
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=788757
+
+ src/lua-factory/grl-lua-library-operations.c | 38 ++++++++++++++--------------
+ 1 file changed, 19 insertions(+), 19 deletions(-)
+
+commit 563fbe481984da711b8eed404f069c7de30fea0f
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Thu Oct 5 14:49:09 2017 +0200
+
+    lua-factory: Fix warning in Apple trailers source
+    
+    We should make the filesize a number, not pass it
+    down as a string.
+    
+    [lua-library] grl-lua-library.c:399: 'string' is not compatible for 'size'
+    
+    https://bugzilla.gnome.org/show_bug.cgi?id=788557
+
+ src/lua-factory/sources/grl-appletrailers.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit f26584d3c1bb6179d71b26a9c78012c95ddb6780
+Author: Xavi Ivars <xavi.ivars@gmail.com>
+Date:   Thu Oct 5 14:28:30 2017 +0200
+
+    [l10n] Updated Catalan (Valencian) translation
+
+ po/ca@valencia.po | 389 +++++++++++++++++++++++++++++-------------------------
+ 1 file changed, 208 insertions(+), 181 deletions(-)
+
+commit 882086cbf6936e475acafdc804a3a6264c7ebdfb
+Author: Christophe Fergeau <cfergeau@redhat.com>
+Date:   Mon Sep 18 11:09:40 2017 +0200
+
+    opensubtitles: Add ::finalize implementation
+    
+    The source has some private data to free when an instance goes away.
+
+ src/opensubtitles/grl-opensubtitles.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
+
+commit 1279ea98e4c29180050330ab324f71051ec39831
+Author: Christophe Fergeau <cfergeau@redhat.com>
+Date:   Mon Sep 18 11:08:29 2017 +0200
+
+    gravatar: Always free the GMatchInfo from g_regex_match()
+    
+    The API doc is explicit about it:
+    «  Note that if match_info is not NULL then it is created even if the
+    function returns FALSE, i.e. you must free it regardless if regular
+    expression actually matched. »
+
+ src/gravatar/grl-gravatar.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 85a51b011e12bb772508ff7a1cf62c3e6f4ce0d5
+Author: Jordi Mas <jmas@softcatala.org>
+Date:   Sun Sep 10 08:52:31 2017 +0200
+
+    Fixes to Catalan translation
+
+ po/ca.po | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+commit d7397a45a6ccba952c4a9160c6268c1c7ca6883f
+Author: Jordi Mas <jmas@softcatala.org>
+Date:   Thu Sep 7 16:11:54 2017 +0200
+
+    Update Catalan translation
+
+ po/ca.po | 355 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 182 insertions(+), 173 deletions(-)
+
+commit 611415c76ae599d735a95e81565fe35f08354184
+Author: Emin Tufan Çetin <etcetin@gmail.com>
+Date:   Wed Sep 6 06:52:04 2017 +0000
+
+    Update Turkish translation
+
+ po/tr.po | 426 ++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 217 insertions(+), 209 deletions(-)
+
+commit 991aef4e7b978cd6b2d14297870cd9d1da3a807a
+Author: Ask Hjorth Larsen <asklarsen@gmail.com>
+Date:   Mon Aug 28 19:24:26 2017 +0200
+
+    Updated Danish translation
+
+ po/da.po | 83 +++++++++++++++++++++++++++++++++-------------------------------
+ 1 file changed, 43 insertions(+), 40 deletions(-)
+
+commit ab76e7e0ce39cec80b4a7ce34f471ded2bdce998
+Author: Victor Toso <me@victortoso.com>
+Date:   Fri Aug 25 11:09:50 2017 +0200
+
+    Post-release version bump to 0.3.6
+
+ configure.ac | 2 +-
+ meson.build  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
 commit ec1c807ae0a3d1f2f5ca12c3147e053d1f0bddd1
 Author: Victor Toso <me@victortoso.com>
 Date:   Fri Aug 25 10:52:14 2017 +0200
