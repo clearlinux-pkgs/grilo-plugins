@@ -1,3 +1,222 @@
+commit 41820b5c4e78f0a3a25441b1ad478a8a9a598953
+Author: Victor Toso <me@victortoso.com>
+Date:   Fri Jul 27 12:10:27 2018 +0200
+
+    Release 0.3.7
+
+ NEWS | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+commit 864b5b95cbfde4ea2f3b703f868243cc1b4225b8
+Author: Victor Toso <me@victortoso.com>
+Date:   Fri Jul 27 12:17:33 2018 +0200
+
+    build: Fix make distcheck
+    
+    As the test with the tarball fails with
+    
+     | (test_games:20431): Grilo-WARNING **: 12:13:09.460: [lua-library]
+     | ../src/lua-factory/grl-lua-library.c:588: Can't fetch element 1 (URL:
+     | http://legacy.thegamesdb.net/api/GetGamesList.php?name=Shatterhand&platform=Nintendo%20Entertainment%20System%20%28NES%29):
+     | 'Could not access mock content: resolve-shatterhand.data'
+
+ tests/games/Makefile.am | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit d11f0a0d23309060e0bb4f55c43549159da707fa
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Mon Jun 4 23:58:14 2018 +0530
+
+    test: Add test to check unregistered keys
+    
+    This test checks whether an unregistered system key is
+    able to register itself as a plugin specific key after
+    source resolution.
+    
+    Related: https://gitlab.gnome.org/GNOME/grilo/issues/1
+
+ tests/games/test_games.c | 70 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 70 insertions(+)
+
+commit bfb35597c8bd0e1fd0d2c3a66cbc26eac64217c3
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Mon May 28 21:06:52 2018 +0530
+
+    thegamesdb: Add developer, publisher, coop & players
+    
+    Allow lua thegamesdb to use developer, publisher, coop & players
+    keys.
+
+ src/lua-factory/sources/grl-thegamesdb.lua | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+commit b2ff70cc031d0cdbb1d309b00ffb47ae3cad1987
+Author: 1PunMan <saurabhsingh412@gmail.com>
+Date:   Mon May 28 20:56:43 2018 +0530
+
+    grl-lua-library: Allow lua plugins to register keys by itself
+    
+    Currently lua plugins have no way of registering keys by themselves,
+    to use a new key it has to be added to system keys. This commit allows
+    lua plugins to register app-specific keys by itself by using
+    grl_data_set_for_id() and grl_data_add_for_id() introduced by Grilo in
+    0.3.6 release.
+    
+    https://gitlab.gnome.org/GNOME/grilo/issues/1
+
+ configure.ac                      |  3 +-
+ meson.build                       |  4 +-
+ src/lua-factory/grl-lua-library.c | 82 ++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 86 insertions(+), 3 deletions(-)
+
+commit 770b11088c1b99ec979015faf95078c1e0dfe69e
+Author: Victor Toso <me@victortoso.com>
+Date:   Mon Jul 23 22:40:41 2018 +0200
+
+    All: Removed deprecated g_type_class_add_private()
+    
+    Instead we define the class with G_DEFINE_TYPE_WITH_PRIVATE() or
+    include G_ADD_PRIVATE() when defining with code.
+    
+    This also removes the usage of G_TYPE_INSTANCE_GET_PRIVATE() as we use
+    instead the _get_instance_private()
+    
+    Notes:
+    - Only plugin skipped is Tracker as it needs more adjustments
+    - Some Private structures had to be renamed
+      e.g: GrlLocalMetadataSourcePriv -> GrlLocalMetadataSourcePrivate
+      e.g: GrlMetadataStorePrivate -> GrlMetadataStoreSourcePrivate
+    - The G_DEFINE_TYPE_WITH_PRIVATE() declaration might be moved as it
+      must be after the private struct definition and before the call for
+      _get_instance_private()
+    - Tested with grilo-test-ui and totem
+
+ src/bookmarks/bookmarks-resource.c          |  9 +++----
+ src/bookmarks/grl-bookmarks.c               | 13 +++-------
+ src/bookmarks/grl-bookmarks.h               |  4 ++--
+ src/chromaprint/grl-chromaprint.c           | 13 +++-------
+ src/chromaprint/grl-chromaprint.h           |  4 ++--
+ src/dleyna/grl-dleyna-server.c              |  6 ++---
+ src/dleyna/grl-dleyna-servers-manager.c     |  7 ++----
+ src/dleyna/grl-dleyna-source.c              |  9 ++-----
+ src/dmap/grl-daap-db.c                      |  5 ++--
+ src/dmap/grl-daap-record.c                  |  3 +--
+ src/dmap/grl-daap.c                         | 13 ++--------
+ src/dmap/grl-dpap-db.c                      |  5 ++--
+ src/dmap/grl-dpap-record.c                  | 17 ++++++-------
+ src/dmap/grl-dpap.c                         |  8 ++-----
+ src/filesystem/grl-filesystem.c             | 13 ++--------
+ src/flickr/gflickr.c                        | 12 ++--------
+ src/flickr/grl-flickr.c                     | 11 ++-------
+ src/freebox/freebox-monitor.c               |  8 ++-----
+ src/freebox/grl-freebox.c                   | 14 ++---------
+ src/jamendo/grl-jamendo.c                   | 17 ++++---------
+ src/jamendo/grl-jamendo.h                   |  4 ++--
+ src/local-metadata/grl-local-metadata.c     | 37 +++++++++++------------------
+ src/local-metadata/grl-local-metadata.h     |  4 ++--
+ src/lua-factory/grl-lua-factory.c           |  6 ++---
+ src/magnatune/grl-magnatune.c               | 13 +++-------
+ src/magnatune/grl-magnatune.h               |  4 ++--
+ src/metadata-store/grl-metadata-store.c     | 11 ++-------
+ src/metadata-store/grl-metadata-store.h     |  4 ++--
+ src/opensubtitles/grl-opensubtitles.c       | 27 ++++++++-------------
+ src/opensubtitles/grl-opensubtitles.h       |  4 ++--
+ src/optical-media/grl-optical-media.c       | 13 ++--------
+ src/podcasts/grl-podcasts.c                 | 13 +++-------
+ src/podcasts/grl-podcasts.h                 |  4 ++--
+ src/raitv/grl-raitv.c                       | 13 ++--------
+ src/shoutcast/grl-shoutcast.c               | 17 ++++---------
+ src/shoutcast/grl-shoutcast.h               |  4 ++--
+ src/thetvdb/grl-thetvdb.c                   | 13 +++-------
+ src/thetvdb/grl-thetvdb.h                   |  4 ++--
+ src/thetvdb/thetvdb-resources-episodes.c    |  5 ++--
+ src/thetvdb/thetvdb-resources-fuzzy-names.c |  9 +++----
+ src/thetvdb/thetvdb-resources-series.c      |  9 +++----
+ src/tmdb/grl-tmdb-request.c                 |  8 ++-----
+ src/tmdb/grl-tmdb.c                         | 12 +++-------
+ src/vimeo/grl-vimeo.c                       | 13 +++-------
+ src/vimeo/gvimeo.c                          |  6 ++---
+ src/youtube/grl-youtube.c                   | 11 ++-------
+ src/youtube/grl-youtube.h                   |  4 ++--
+ 47 files changed, 135 insertions(+), 328 deletions(-)
+
+commit 92e0f2a0fb9565e58f388d2606d6a26fead29e8a
+Author: Victor Toso <me@victortoso.com>
+Date:   Wed Jul 25 23:37:14 2018 +0200
+
+    build: require same version for glib components
+    
+    As Glib2 requirement was 2.44 since e0aecb45fc7eaa5 we can use the
+    same version for all glib components that are required in
+    Grilo-Plugins
+    
+    - gmodule-2.0
+    - gobject-2.0
+    - glib-2.0
+
+ configure.ac | 10 ++++++----
+ meson.build  |  9 ++++++---
+ 2 files changed, 12 insertions(+), 7 deletions(-)
+
+commit fa337aa3e7bcd9da327f2f48d5cf79ffafcfec9d
+Author: Bastien Nocera <hadess@hadess.net>
+Date:   Tue Jul 24 17:49:26 2018 +0200
+
+    build: Add CI
+
+ .gitlab-ci.yml | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+
+commit f88ec4080ffa14384a325dcb9f8d7e2c6c220565
+Author: Alexander Mikhaylenko <exalm7659@gmail.com>
+Date:   Tue Jul 17 22:17:52 2018 +0000
+
+    meson: Search lua-factory sources to correct dir
+    
+    Fixes problem partially fixed in commit
+    e3196693258c2935023f482592ff16de6f6f56ec.
+
+ src/lua-factory/meson.build         | 2 +-
+ src/lua-factory/sources/meson.build | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 4d2775612899597fe25d28ab385b6b510af6ca13
+Author: Milo Casagrande <milo@ubuntu.com>
+Date:   Thu Jul 19 06:46:55 2018 +0000
+
+    Update Italian translation
+
+ po/it.po | 353 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 176 insertions(+), 177 deletions(-)
+
+commit 062bcbacb8a914c85d0c11f4533cab6c7a2804df
+Author: Anders Jonsson <anders.jonsson@norsjovallen.se>
+Date:   Wed Jul 18 11:19:04 2018 +0000
+
+    Update Swedish translation
+
+ po/sv.po | 357 +++++++++++++++++++++++++++++++--------------------------------
+ 1 file changed, 177 insertions(+), 180 deletions(-)
+
+commit 3322a7b99b56677aaac1307273a0f571b01e4b80
+Author: Daniel Șerbănescu <daniel@serbanescu.dk>
+Date:   Tue Jul 17 18:49:09 2018 +0000
+
+    Update Romanian translation
+
+ po/ro.po | 42 +++++++++++++++++++++---------------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+commit 04280b9762330c295de9653032559b160a5feb85
+Author: Victor Toso <me@victortoso.com>
+Date:   Tue Jul 17 17:06:34 2018 +0200
+
+    Post-release version bump to 0.3.7
+
+ configure.ac | 2 +-
+ meson.build  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
 commit 99c6c8942a3b19b3c178f2bd3d8deef270db6cf8
 Author: Victor Toso <me@victortoso.com>
 Date:   Tue Jul 17 16:56:40 2018 +0200
