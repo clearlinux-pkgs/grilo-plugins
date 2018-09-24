@@ -1,2 +1,6 @@
-0.3.7
+0.3.8
 gperf
+json-glib-dev
+libarchive-dev
+lua-dev
+sqlite-autoconf-dev
