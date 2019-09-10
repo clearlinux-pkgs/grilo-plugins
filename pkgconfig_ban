@@ -8,3 +8,6 @@ libmediaart-2.0
 tracker-sparql-VERSION
 avahi-client
 avahi-glib
+tracker-sparql-1.0
+lua5.3
+lua-5.3
