@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.10
-Release  : 13
+Release  : 14
 URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.10.tar.xz
 Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.10.tar.xz
 Summary  : A collection of plugins for the Grilo framework
