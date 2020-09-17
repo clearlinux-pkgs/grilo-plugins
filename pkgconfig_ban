@@ -4,10 +4,12 @@ gmime-2.6
 avahi-gobject
 gom-1.0
 libdmapsharing-3.0
+libdmapsharing-4.0
 libmediaart-2.0
 tracker-sparql-VERSION
 avahi-client
 avahi-glib
 tracker-sparql-1.0
+tracker-sparql-2.0
 lua5.3
 lua-5.3
