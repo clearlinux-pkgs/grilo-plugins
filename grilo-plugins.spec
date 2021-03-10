@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.12
-Release  : 17
+Release  : 18
 URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.12.tar.xz
 Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.12.tar.xz
 Summary  : Plugins for the Grilo Framework
@@ -17,14 +17,7 @@ Requires: grilo-plugins-locales = %{version}-%{release}
 BuildRequires : buildreq-gnome
 BuildRequires : buildreq-meson
 BuildRequires : gmime-dev
-BuildRequires : gnome-online-accounts-dev
 BuildRequires : gperf
-BuildRequires : gstreamer-dev
-BuildRequires : json-glib-dev
-BuildRequires : libarchive-dev
-BuildRequires : liboauth-dev
-BuildRequires : libsoup-dev
-BuildRequires : lua-dev
 BuildRequires : pkgconfig(goa-1.0)
 BuildRequires : pkgconfig(grilo-0.3)
 BuildRequires : pkgconfig(gstreamer-1.0)
@@ -39,7 +32,6 @@ BuildRequires : pkgconfig(totem-plparser)
 BuildRequires : pkgconfig(totem-plparser-mini)
 BuildRequires : pkgconfig(tracker-sparql-3.0)
 BuildRequires : pkgconfig(tracker-testutils-3.0)
-BuildRequires : sqlite-autoconf-dev
 
 %description
 # grilo-plugins
@@ -111,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1600315152
+export SOURCE_DATE_EPOCH=1615417622
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
