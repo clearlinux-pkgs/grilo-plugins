@@ -13,7 +13,6 @@ libgstreamer-1.0.so.0
 libjson-glib-1.0.so.0
 liblua.so.5.4
 liboauth.so.0
-libpthread.so.0
 libsoup-2.4.so.1
 libsqlite3.so.0
 libtotem-plparser-mini.so.18
