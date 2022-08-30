@@ -1,7 +1,6 @@
 libarchive.so.13
 libc.so.6
 libgcc_s.so.1
-libgdata.so.22
 libgio-2.0.so.0
 libglib-2.0.so.0
 libgoa-1.0.so.0
@@ -13,7 +12,6 @@ libgstreamer-1.0.so.0
 libjson-glib-1.0.so.0
 liblua.so.5.4
 liboauth.so.0
-libsoup-2.4.so.1
 libsqlite3.so.0
 libtotem-plparser-mini.so.18
 libtotem-plparser.so.18

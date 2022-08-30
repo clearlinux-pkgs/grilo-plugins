@@ -4,7 +4,7 @@
 #
 Name     : grilo-plugins
 Version  : 0.3.15
-Release  : 21
+Release  : 22
 URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.15.tar.xz
 Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.15.tar.xz
 Summary  : Plugins for the Grilo Framework
@@ -103,7 +103,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1661881090
+export SOURCE_DATE_EPOCH=1661881721
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -203,14 +203,12 @@ DESTDIR=%{buildroot} ninja -C builddir install
 /usr/lib64/grilo-0.3/libgrlluafactory.so
 /usr/lib64/grilo-0.3/libgrlmagnatune.so
 /usr/lib64/grilo-0.3/libgrlmetadatastore.so
-/usr/lib64/grilo-0.3/libgrlopensubtitles.so
 /usr/lib64/grilo-0.3/libgrlopticalmedia.so
 /usr/lib64/grilo-0.3/libgrlpodcasts.so
 /usr/lib64/grilo-0.3/libgrlraitv.so
 /usr/lib64/grilo-0.3/libgrlshoutcast.so
 /usr/lib64/grilo-0.3/libgrltmdb.so
 /usr/lib64/grilo-0.3/libgrltracker3.so
-/usr/lib64/grilo-0.3/libgrlyoutube.so
 
 %files license
 %defattr(0644,root,root,0755)
