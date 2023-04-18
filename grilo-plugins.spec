@@ -4,10 +4,10 @@
 # Using build pattern: meson
 #
 Name     : grilo-plugins
-Version  : 0.3.15
-Release  : 23
-URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.15.tar.xz
-Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.15.tar.xz
+Version  : 0.3.16
+Release  : 24
+URL      : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.16.tar.xz
+Source0  : https://download.gnome.org/sources/grilo-plugins/0.3/grilo-plugins-0.3.16.tar.xz
 Summary  : Plugins for the Grilo Framework
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -99,15 +99,15 @@ locales components for the grilo-plugins package.
 
 
 %prep
-%setup -q -n grilo-plugins-0.3.15
-cd %{_builddir}/grilo-plugins-0.3.15
+%setup -q -n grilo-plugins-0.3.16
+cd %{_builddir}/grilo-plugins-0.3.16
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680033276
+export SOURCE_DATE_EPOCH=1681856587
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
