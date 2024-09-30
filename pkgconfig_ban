@@ -1,16 +1,17 @@
 # This file contains pkgconfig build requirements that get picked up
 # but are undesirable. One entry per line, no whitespace.
-gmime-2.6
+avahi-client
+avahi-glib
 avahi-gobject
+gmime-2.6
 gom-1.0
 libdmapsharing-3.0
 libdmapsharing-4.0
 libmediaart-2.0
-tracker-sparql-VERSION
-avahi-client
-avahi-glib
+lua-5.3
+lua5.3
 tracker-sparql-1.0
 tracker-sparql-2.0
-lua5.3
-lua-5.3
+tracker-sparql-VERSION
+tracker-testutils-3.0
 unresolvable-dep
